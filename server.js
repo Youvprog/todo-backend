@@ -4,8 +4,8 @@ const cors = require('cors')
 const userRouter = require('./routes/users')
 const todosRouter = require('./routes/todos')
 const corsOptions = require('./configuration/corsOptions')
+const verifyToken = require('./middleware/vetifyToken')
 const PORT = process.env.PORT || 3000
-
 
 app.use(cors(corsOptions))
 app.use(express.json())
