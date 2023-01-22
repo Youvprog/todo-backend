@@ -12,8 +12,6 @@ function verifyToken(token) {
         rep = true
        }       
     })
-    // const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-    // console.log(decoded)
     return rep
 }
 
