@@ -5,6 +5,7 @@ const cors = require('cors')
 const userRouter = require('./routes/users')
 const todosRouter = require('./routes/todos')
 const corsOptions = require('./configuration/corsOptions')
+const verifyToken = require('./middleware/vetifyToken')
 const PORT = process.env.PORT || 3000
 
 
@@ -18,5 +19,5 @@ app.get('/', (req, res) => {
 })
 
 app.use(userRouter)
-app.use(todosRouter)
+app.use(verifyToken,todosRouter)
 app.listen(PORT)

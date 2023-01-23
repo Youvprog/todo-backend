@@ -2,17 +2,18 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 
-function verifyToken(token) {
-    let rep = null
-    if(!token) return false
+function verifyToken(req, res, next) {
+    const token = req.headers.authorization
+    if(!token) return res.status(401).send({msg: 'Token not found, please log in'})
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET , function(err, decoded) {
        if(err) {
-        rep = false
+            return res.status(401).send({msg: 'Token not Valid'})
        } else {
-        rep = true
+            //req.user = decoded
+            next()
        }       
     })
-    return rep
+    
 }
 
 
