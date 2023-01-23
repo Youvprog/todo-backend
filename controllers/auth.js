@@ -12,8 +12,7 @@ module.exports = {
                     await db.query('INSERT INTO USERS (email) VALUES(?)', [email])
                     res.status(201).send({msg: 'user created'})
                 } catch (error) {
-                    console.log(error)
-                    res.status(500).send({msg: 'Something went wrong, try again'})
+                    res.status(500).send('User already exist')
                 }
             }
     },

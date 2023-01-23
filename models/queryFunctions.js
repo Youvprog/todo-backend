@@ -20,6 +20,7 @@ async function insertData(sql_query, ...data) {
         data.forEach((item, index) => {
             obj[`${keys[index]}`] = item
         })
+        obj.completed = 0
         return obj
         
     } catch (error) {
